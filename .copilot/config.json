@@ -1,0 +1,21 @@
+{
+    "project": {
+        "name": "SignalR Desktop Notification App",
+        "description": "A desktop application that uses SignalR to receive real-time notifications.",
+        "technologies": ["C#", "WPF", "SignalR", ".NET"],
+        "features": [
+            "Real-time notifications using SignalR",
+            "API connectivity to fetch data from a server on event trigger",
+            "User interface to display latest details of an event",
+            "Background service to listen for events even when the app is minimized",
+            "Exit functionality to close the application",
+            "Error handling for API connectivity issues",
+            "Force pull to update the latest details of an event",
+            "Reconnect functionality to handle SignalR connection drops",
+            "Reconnect button to manually trigger reconnection attempts",
+            "SignalR connection status indicator to show current connection state"
+        ],
+        "language": "C#",
+        "framework": "WinUI"
+    }
+}
