@@ -110,17 +110,30 @@ namespace SignalR.Event.Handler.App
 
         private void SetupHubConnection()
         {
+            System.Diagnostics.Debug.WriteLine($"[SignalR] Setting up hub connection to: {_hubConnectionSettings.ServerUrl}");
+
             _hubConnection = new HubConnectionBuilder()
                 .WithUrl(_hubConnectionSettings.ServerUrl)
                 .WithAutomaticReconnect()
                 .Build();
 
-            _hubConnection.On<EventDetailsResponse>("ReceiveEventDetails", (eventDetails) =>
+            System.Diagnostics.Debug.WriteLine("[SignalR] Registering 'ReceiveEvent' handler");
+            _hubConnection.On<EventSummary>("ReceiveEvent", (eventSummary) =>
             {
-                DispatcherQueue.TryEnqueue(() =>
+                System.Diagnostics.Debug.WriteLine($"[SignalR] ReceiveEvent triggered! EventMessage: {eventSummary}");
+                if (eventSummary.UserId == (UserName))
                 {
-                    LatestEvent = eventDetails;
-                });
+                    System.Diagnostics.Debug.WriteLine("[SignalR] Event is for current user, fetching event details...");
+                    DispatcherQueue.TryEnqueue(() =>
+                    {
+                        var newEvent = _eventDetailsApiClient.GetEventDetailsByUserName(UserName);
+                        LatestEvent = newEvent;
+                    });
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("[SignalR] Event is not for current user, ignoring.");
+                }
             });
 
             _hubConnection.Closed += async (error) =>
@@ -155,12 +168,17 @@ namespace SignalR.Event.Handler.App
         private async Task StartConnectionAsync()
         {
             if (_hubConnection == null)
+            {
+                System.Diagnostics.Debug.WriteLine("[SignalR] StartConnectionAsync called but _hubConnection is null");
                 return;
+            }
 
             try
             {
+                System.Diagnostics.Debug.WriteLine("[SignalR] Starting connection...");
                 UpdateConnectionStatus(ConnectionStatusEnum.Connecting);
                 await _hubConnection.StartAsync();
+                System.Diagnostics.Debug.WriteLine($"[SignalR] Connection started successfully! State: {_hubConnection.State}");
                 UpdateConnectionStatus(ConnectionStatusEnum.Connected);
             }
             catch (Exception ex)

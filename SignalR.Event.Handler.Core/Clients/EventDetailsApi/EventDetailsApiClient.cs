@@ -36,7 +36,7 @@ namespace SignalR.Event.Handler.Core.Clients.EventDetailsApi
             }
 
             // Use _apiSettings.EventDetailsApiUrl to make the API call with retry logic
-            var apiUrl = $"{_apiSettings.EventDetailsApiUrl}/query/{userName}/";
+            var apiUrl = $"{_apiSettings.EventDetailsApiUrl}/events/query/{userName}";
 
             var response = _retryPolicy.Execute(() => _httpClientUtility.ExecuteHttpGetSync<EventDetailsResponse>(apiUrl));
 
