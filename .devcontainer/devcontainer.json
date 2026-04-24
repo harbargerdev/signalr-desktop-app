@@ -1,0 +1,25 @@
+{
+	"name": ".NET 10 SDK WinUI Dev Container",
+	"image": "mcr.microsoft.com/dotnet/sdk:10.0",
+
+	"features": {
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {
+			"version": "latest",
+			"enableNonRootDocker": "true",
+			"moby": "true"
+		}
+	},
+
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-dotnettools.csharp",
+				"ms-vscode.powershell"
+			]
+		}
+	},
+
+	"postCreateCommand": "dotnet --info",
+
+	"remoteUser": "vscode"
+}

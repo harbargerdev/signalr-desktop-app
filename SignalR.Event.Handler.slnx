@@ -1,0 +1,20 @@
+<Solution>
+  <Configurations>
+    <Platform Name="ARM64" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="SignalR.Event.Handler.App/SignalR.Event.Handler.App.csproj">
+    <Platform Solution="*|ARM64" Project="ARM64" />
+    <Platform Solution="*|x64" Project="x64" />
+    <Platform Solution="*|x86" Project="x86" />
+    <Deploy />
+  </Project>
+  <Project Path="SignalR.Event.Handler.Core.Tests/SignalR.Event.Handler.Core.Tests.csproj" />
+  <Project Path="SignalR.Event.Handler.Core/SignalR.Event.Handler.Core.csproj" />
+</Solution>
