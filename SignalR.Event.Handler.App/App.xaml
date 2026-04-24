@@ -10,6 +10,10 @@
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
                 <!-- Other merged dictionaries here -->
             </ResourceDictionary.MergedDictionaries>
+
+            <!-- Custom brush resources from theme colors -->
+            <SolidColorBrush x:Key="ErrorTextBrush" Color="{ThemeResource SystemErrorTextColor}"/>
+
             <!-- Other app resources here -->
         </ResourceDictionary>
     </Application.Resources>

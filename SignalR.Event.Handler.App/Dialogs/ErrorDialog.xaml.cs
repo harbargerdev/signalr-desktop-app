@@ -105,7 +105,7 @@ namespace SignalR.Event.Handler.App.Dialogs
                 Text = _userMessage,
                 TextWrapping = TextWrapping.Wrap,
                 FontWeight = FontWeights.SemiBold,
-                Foreground = (Microsoft.UI.Xaml.Media.Brush)Application.Current.Resources["SystemErrorTextColor"]
+                Foreground = new Microsoft.UI.Xaml.Media.SolidColorBrush((Windows.UI.Color)Application.Current.Resources["SystemErrorTextColor"])
             };
             mainPanel.Children.Add(userMessageTextBlock);
 
@@ -197,7 +197,8 @@ namespace SignalR.Event.Handler.App.Dialogs
                 Background = new Microsoft.UI.Xaml.Media.SolidColorBrush(Microsoft.UI.Colors.Transparent),
                 FontFamily = new Microsoft.UI.Xaml.Media.FontFamily("Consolas"),
                 FontSize = 12,
-                Padding = new Thickness(10)
+                Padding = new Thickness(10),
+                MinHeight = 100
             };
 
             stackTraceBorder.Child = stackTraceScrollViewer;
