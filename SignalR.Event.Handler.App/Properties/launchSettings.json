@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SignalR.Event.Handler.App (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "SignalR.Event.Handler.App (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
