@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace SignalR.Event.Handler.App.Utilities
+namespace SignalR.Event.Handler.Core.Utilities
 {
     /// <summary>
     /// Represents the connection status of the SignalR hub.

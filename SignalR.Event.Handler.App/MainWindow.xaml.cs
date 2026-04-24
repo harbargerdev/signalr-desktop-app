@@ -2,16 +2,17 @@ using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.Options;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
-using SignalR.Event.Handler.App.Clients.EventDetailsApi;
-using SignalR.Event.Handler.App.Clients.EventDetailsApi.Responses;
-using SignalR.Event.Handler.App.Configuration;
+using SignalR.Event.Handler.Core.Clients.EventDetailsApi;
+using SignalR.Event.Handler.Core.Clients.EventDetailsApi.Responses;
+using SignalR.Event.Handler.Core.Configuration;
 using SignalR.Event.Handler.App.Dialogs;
-using SignalR.Event.Handler.App.Utilities;
-using SignalR.Event.Handler.App.Utilities.Extensions;
+using SignalR.Event.Handler.Core.Utilities;
+using SignalR.Event.Handler.Core.Utilities.Extensions;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using ConnectionStatusEnum = SignalR.Event.Handler.Core.Utilities.ConnectionStatus;
 
 namespace SignalR.Event.Handler.App
 {
@@ -26,8 +27,8 @@ namespace SignalR.Event.Handler.App
 
         private HubConnection? _hubConnection;
         private EventDetailsResponse? _latestEvent;
-        private ConnectionStatus _currentConnectionStatus = Utilities.ConnectionStatus.Disconnected;
-        private string _connectionStatusText = Utilities.ConnectionStatus.Disconnected.ToDisplayString();
+        private ConnectionStatusEnum _currentConnectionStatus = ConnectionStatusEnum.Disconnected;
+        private string _connectionStatusText = ConnectionStatusEnum.Disconnected.ToDisplayString();
         private SolidColorBrush _connectionStatusBrush;
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -126,7 +127,7 @@ namespace SignalR.Event.Handler.App
             {
                 DispatcherQueue.TryEnqueue(() =>
                 {
-                    UpdateConnectionStatus(Utilities.ConnectionStatus.Disconnected);
+                    UpdateConnectionStatus(ConnectionStatusEnum.Disconnected);
                 });
                 await Task.Delay(5000);
                 await StartConnectionAsync();
@@ -136,7 +137,7 @@ namespace SignalR.Event.Handler.App
             {
                 DispatcherQueue.TryEnqueue(() =>
                 {
-                    UpdateConnectionStatus(Utilities.ConnectionStatus.Connecting);
+                    UpdateConnectionStatus(ConnectionStatusEnum.Connecting);
                 });
                 return Task.CompletedTask;
             };
@@ -145,7 +146,7 @@ namespace SignalR.Event.Handler.App
             {
                 DispatcherQueue.TryEnqueue(() =>
                 {
-                    UpdateConnectionStatus(Utilities.ConnectionStatus.Connected);
+                    UpdateConnectionStatus(ConnectionStatusEnum.Connected);
                 });
                 return Task.CompletedTask;
             };
@@ -158,13 +159,13 @@ namespace SignalR.Event.Handler.App
 
             try
             {
-                UpdateConnectionStatus(Utilities.ConnectionStatus.Connecting);
+                UpdateConnectionStatus(ConnectionStatusEnum.Connecting);
                 await _hubConnection.StartAsync();
-                UpdateConnectionStatus(Utilities.ConnectionStatus.Connected);
+                UpdateConnectionStatus(ConnectionStatusEnum.Connected);
             }
             catch (Exception ex)
             {
-                UpdateConnectionStatus(Utilities.ConnectionStatus.Disconnected);
+                UpdateConnectionStatus(ConnectionStatusEnum.Disconnected);
                 Console.WriteLine("Error reconnecting to SignalR hub.");
                 Console.WriteLine($"Error Message: {ex.Message}");
                 Console.WriteLine($"Stack Trace:\n{ex.StackTrace}");
@@ -172,7 +173,7 @@ namespace SignalR.Event.Handler.App
             }
         }
 
-        private void UpdateConnectionStatus(Utilities.ConnectionStatus status)
+        private void UpdateConnectionStatus(ConnectionStatusEnum status)
         {
             _currentConnectionStatus = status;
 
@@ -180,9 +181,9 @@ namespace SignalR.Event.Handler.App
 
             ConnectionStatusBrush = status switch
             {
-                Utilities.ConnectionStatus.Connected => new SolidColorBrush(Microsoft.UI.Colors.Green),
-                Utilities.ConnectionStatus.Connecting => new SolidColorBrush(Microsoft.UI.Colors.Orange),
-                Utilities.ConnectionStatus.Disconnected => new SolidColorBrush(Microsoft.UI.Colors.Red),
+                ConnectionStatusEnum.Connected => new SolidColorBrush(Microsoft.UI.Colors.Green),
+                ConnectionStatusEnum.Connecting => new SolidColorBrush(Microsoft.UI.Colors.Orange),
+                ConnectionStatusEnum.Disconnected => new SolidColorBrush(Microsoft.UI.Colors.Red),
                 _ => new SolidColorBrush(Microsoft.UI.Colors.Gray)
             };
         }

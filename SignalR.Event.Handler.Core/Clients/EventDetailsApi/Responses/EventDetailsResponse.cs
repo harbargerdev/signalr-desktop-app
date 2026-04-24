@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System.Runtime.Serialization;
 
-namespace SignalR.Event.Handler.App.Clients.EventDetailsApi.Responses
+namespace SignalR.Event.Handler.Core.Clients.EventDetailsApi.Responses
 {
     [JsonObject(MemberSerialization.OptIn)]
     public class EventDetailsResponse : ISerializable

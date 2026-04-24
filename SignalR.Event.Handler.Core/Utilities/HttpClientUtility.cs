@@ -1,11 +1,11 @@
-﻿using Newtonsoft.Json;
-using SignalR.Event.Handler.App.Utilities.Extensions;
+using Newtonsoft.Json;
+using SignalR.Event.Handler.Core.Utilities.Extensions;
 using System;
 using System.Net.Http;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
-namespace SignalR.Event.Handler.App.Utilities
+namespace SignalR.Event.Handler.Core.Utilities
 {
     /// <inheritdoc />
     public class HttpClientUtility : IHttpClientUtility

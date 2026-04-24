@@ -1,10 +1,10 @@
-﻿using Microsoft.Extensions.Options;
-using SignalR.Event.Handler.App.Clients.EventDetailsApi.Responses;
-using SignalR.Event.Handler.App.Configuration;
-using SignalR.Event.Handler.App.Utilities;
+using Microsoft.Extensions.Options;
+using SignalR.Event.Handler.Core.Clients.EventDetailsApi.Responses;
+using SignalR.Event.Handler.Core.Configuration;
+using SignalR.Event.Handler.Core.Utilities;
 using System;
 
-namespace SignalR.Event.Handler.App.Clients.EventDetailsApi
+namespace SignalR.Event.Handler.Core.Clients.EventDetailsApi
 {
     public class EventDetailsApiClient : IEventDetailsApiClient
     {

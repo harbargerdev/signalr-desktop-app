@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Net.Http;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
-namespace SignalR.Event.Handler.App.Utilities
+namespace SignalR.Event.Handler.Core.Utilities
 {
     /// <summary>
     /// Defines utility methods for sending synchronous and asynchronous HTTP GET and POST requests with support for

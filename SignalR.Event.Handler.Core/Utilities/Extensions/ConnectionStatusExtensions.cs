@@ -1,4 +1,4 @@
-namespace SignalR.Event.Handler.App.Utilities.Extensions
+namespace SignalR.Event.Handler.Core.Utilities.Extensions
 {
     /// <summary>
     /// Extension methods for ConnectionStatus enum.

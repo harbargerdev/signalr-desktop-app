@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Net.Http;
-using SignalR.Event.Handler.App.Clients.EventDetailsApi.Responses;
+using SignalR.Event.Handler.Core.Clients.EventDetailsApi.Responses;
 
-namespace SignalR.Event.Handler.App.Clients.EventDetailsApi
+namespace SignalR.Event.Handler.Core.Clients.EventDetailsApi
 {
     public interface IEventDetailsApiClient
     {

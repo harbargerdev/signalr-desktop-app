@@ -1,4 +1,4 @@
-﻿namespace SignalR.Event.Handler.App.Configuration
+namespace SignalR.Event.Handler.Core.Configuration
 {
     /// <summary>
     /// Represents the configuration settings required to establish a connection to a SignalR hub.

@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace SignalR.Event.Handler.App.Utilities.Extensions
+namespace SignalR.Event.Handler.Core.Utilities.Extensions
 {
     public static class StringExtensionMethods
     {

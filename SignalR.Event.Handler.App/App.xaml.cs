@@ -2,9 +2,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
-using SignalR.Event.Handler.App.Clients.EventDetailsApi;
-using SignalR.Event.Handler.App.Configuration;
-using SignalR.Event.Handler.App.Utilities;
+using SignalR.Event.Handler.Core.Clients.EventDetailsApi;
+using SignalR.Event.Handler.Core.Configuration;
+using SignalR.Event.Handler.Core.Utilities;
 using System;
 
 // To learn more about WinUI, the WinUI project structure,

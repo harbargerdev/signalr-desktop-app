@@ -1,4 +1,4 @@
-namespace SignalR.Event.Handler.App.Configuration
+namespace SignalR.Event.Handler.Core.Configuration
 {
     /// <summary>
     /// Configuration settings for API clients.

@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace SignalR.Event.Handler.App.Utilities
+namespace SignalR.Event.Handler.Core.Utilities
 {
     /// <summary>
     /// Provides retry policy configuration for API operations.
